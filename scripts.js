@@ -6,42 +6,60 @@ function computerPlay(rockPaperScissors) {
     return Math.floor(Math.random() * rockPaperScissors.length);
 };
 
-// plays the round and decides who wins
+let playerScore = 0;
+let computerScore = 0;
+let whoWinsRound = '';
+let computerSelection = computerPlay(rockPaperScissors);
+
+// decides who wins a single round
 function playRound(playerSelection, computerSelection) {
     if ((playerSelection == 'rock') && (computerSelection == 1)) {
-        return alert('Paper beats rock. You lost.');
+        return computerScore++,
+        whoWinsRound == 'computer';
 
     } else if ((playerSelection == 'paper') && (computerSelection == 2)) {
-        return alert('Scissors beats paper. You lost.');
+        return computerScore++,
+        whoWinsRound == 'computer';
 
     } else if ((playerSelection == 'scissors') && (computerSelection == 0)) {
-        return alert('Rock beats scissors. You lost.');
+        return computerScore++,
+        whoWinsRound == 'computer';
 
     } else if ((playerSelection == 'rock') && (computerSelection == 2)) {
-        return alert('Rock beats scissors. You won.');
+        return playerScore++,
+        whoWinsRound == 'player';
 
     } else if ((playerSelection == 'paper') && (computerSelection == 0)) {
-        return alert('Paper beats rock. You won.');
+        return playerScore++,
+        whoWinsRound == 'player';
 
     } else if ((playerSelection == 'scissors') && (computerSelection == 1)) {
-        return alert('Scissors beats paper. You lost.');
+        return playerScore++,
+        whoWinsRound == 'player';
 
     } else {
-        return alert('It\'s a tie. Try again.');
+        console.log('It\'s a tie. Try again.');
     }
-}
+};
 
-const computerSelection = computerPlay(rockPaperScissors);
-const playerSelection = prompt().toLowerCase();
-const round = playRound(playerSelection, computerSelection);
+// plays round 5 times
+for (i = 0; i < 5; i++) {
+    let playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
+    let roundResult = playRound(playerSelection, computerSelection);
+    roundScore(roundResult);
+};
 
-
-// plays playRound 5 times
-function game() {
-    for(let i = 0; i < 5; i++) {
-        if ()
+function roundScore(roundResult) {
+    if (whoWinsRound == 'player') {
+        alert('You won this round');
+    } else {
+        alert('You lost this round');
     }
-}
+};
+
+function gameScore() {
+
+};
 
 
 
