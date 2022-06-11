@@ -8,37 +8,48 @@ function computerPlay(rockPaperScissors) {
 
 let playerScore = 0;
 let computerScore = 0;
-let whoWinsRound = '';
+let whoWinsRound = 0;
 let computerSelection = computerPlay(rockPaperScissors);
 
 // decides who wins a single round
 function playRound(playerSelection, computerSelection) {
     if ((playerSelection == 'rock') && (computerSelection == 1)) {
         return computerScore++,
-        whoWinsRound == 'computer';
+        whoWinsRound = 1;
 
     } else if ((playerSelection == 'paper') && (computerSelection == 2)) {
         return computerScore++,
-        whoWinsRound == 'computer';
+        whoWinsRound = 1;
 
     } else if ((playerSelection == 'scissors') && (computerSelection == 0)) {
         return computerScore++,
-        whoWinsRound == 'computer';
+        whoWinsRound = 1;
 
     } else if ((playerSelection == 'rock') && (computerSelection == 2)) {
         return playerScore++,
-        whoWinsRound == 'player';
+        whoWinsRound = 2;
 
     } else if ((playerSelection == 'paper') && (computerSelection == 0)) {
         return playerScore++,
-        whoWinsRound == 'player';
+        whoWinsRound = 2;
 
     } else if ((playerSelection == 'scissors') && (computerSelection == 1)) {
         return playerScore++,
-        whoWinsRound == 'player';
+        whoWinsRound = 2;
 
     } else {
-        console.log('It\'s a tie. Try again.');
+        return whoWinsRound = 0;
+    }
+};
+
+// window alert that shows who won a single round
+function roundScore() {
+    if (whoWinsRound == 2) {
+        alert('You won this round.');
+    } else if (whoWinsRound == 1) {
+        alert('You lost this round.');
+    } else {
+        alert('It\'s a tie. Try again.');
     }
 };
 
@@ -49,13 +60,7 @@ for (i = 0; i < 5; i++) {
     roundScore(roundResult);
 };
 
-function roundScore(roundResult) {
-    if (whoWinsRound == 'player') {
-        alert('You won this round');
-    } else {
-        alert('You lost this round');
-    }
-};
+
 
 function gameScore() {
 
