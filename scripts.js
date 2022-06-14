@@ -1,65 +1,82 @@
-// randomly generates computer choice
-let rockPaperScissors = ['rock', 'paper', 'scissors'];
-function computerPlay(rockPaperScissors) {
-    return Math.floor(Math.random() * rockPaperScissors.length);
-};
 
 let playerScore = 0;
 let computerScore = 0;
-let whoWinsRound = 0;
-let computerSelection = computerPlay(rockPaperScissors);
+let whoWinsRound = '';
 
-// decides who wins a single round and gives +1 point to the winner
-function playRound(playerSelection, computerSelection) {
-    if ((playerSelection == 'rock') && (computerSelection == 1)) {
-        return computerScore++,
-        whoWinsRound = 1;
+function game() {
+    let computerSelection = computerPlay();
+    let playerSelection = playerPlay();
 
-    } else if ((playerSelection == 'paper') && (computerSelection == 2)) {
-        return computerScore++,
-        whoWinsRound = 1;
+    function computerPlay() { //generates random computer choice
+        let randomNumber = Math.floor(Math.random() * 3)
+        switch (randomNumber) {
+          case 0:
+            return 'rock'
+          case 1:
+            return 'paper'
+          case 2:
+            return 'scissors'
+        }
 
-    } else if ((playerSelection == 'scissors') && (computerSelection == 0)) {
-        return computerScore++,
-        whoWinsRound = 1;
+    };
+    
+    function playerPlay() { 
+        return playerChoice = prompt('Rock, Paper or Scissors?').toLowerCase();
+    };
+    
+    function playRound(playerSelection, computerSelection) { //decides who wins the round
 
-    } else if ((playerSelection == 'rock') && (computerSelection == 2)) {
-        return playerScore++,
-        whoWinsRound = 2;
+        if ((playerSelection == 'rock') && (computerSelection == 'paper')) {
+            whoWinsRound = 'computer';
+            computerScore++;
+    
+        } else if ((playerSelection == 'paper') && (computerSelection == 'scissors')) {
+            whoWinsRound = 'computer';
+            computerScore++;
+    
+        } else if ((playerSelection == 'scissors') && (computerSelection == 'rock')) {
+            whoWinsRound = 'computer';
+            computerScore++;
+    
+        } else if ((playerSelection == 'rock') && (computerSelection == 'scissors')) {
+            whoWinsRound = 'player';
+            playerScore++;
+    
+        } else if ((playerSelection == 'paper') && (computerSelection == 'rock')) {
+            whoWinsRound = 'player';
+            playerScore++;
+    
+        } else if ((playerSelection == 'scissors') && (computerSelection == 'paper')) {
+            whoWinsRound = 'player';
+            playerScore++;
+    
+        } else {
+            whoWinsRound = 'draw';
+        }
+    };
 
-    } else if ((playerSelection == 'paper') && (computerSelection == 0)) {
-        return playerScore++,
-        whoWinsRound = 2;
+    function roundScore() { //shows alert window with score after every round   
+        if (whoWinsRound == 'player') {
+            alert(`${playerSelection} beats ${computerSelection}. You won this round. 
+            Your score: ${playerScore} Computer score: ${computerScore}`);
+    
+        } else if (whoWinsRound == 'computer') {
+            alert(`${playerSelection} gets beaten by ${computerSelection}. You lost this round.
+            Your score: ${playerScore} Computer score: ${computerScore}`);
+    
+        } else {
+            alert('It\'s a tie. Try again.');
+        }
+    };
 
-    } else if ((playerSelection == 'scissors') && (computerSelection == 1)) {
-        return playerScore++,
-        whoWinsRound = 2;
-
-    } else {
-        return whoWinsRound = 0;
-    }
+    playRound(playerSelection, computerSelection);
+    roundScore();
 };
 
-// window alert that shows who won a single round
-function roundScore() {
-    if (whoWinsRound == 2) {
-        alert(`You won this round. 
-        Your score: ${playerScore} Computer score: ${computerScore}`);
 
-    } else if (whoWinsRound == 1) {
-        alert(`You lost this round.
-        Your score: ${playerScore} Computer score: ${computerScore}`);
+for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
+    game();
 
-    } else {
-        alert('It\'s a tie. Try again.');
-    }
-};
-
-// loops the game until someone wins 3 rounds
-for (let i = 0; i < 15; i++) {
-    let playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
-    let roundResult = playRound(playerSelection, computerSelection);
-    roundScore(roundResult);
     if (playerScore == 3) {
         alert('You\'ve won! Congratulations :)');
         break;
@@ -69,3 +86,9 @@ for (let i = 0; i < 15; i++) {
         break;
     }
 };
+
+/*
+console.log(computerSelection);
+console.log(playerSelection);
+console.log(whoWinsRound);
+*/
