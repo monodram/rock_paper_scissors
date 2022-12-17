@@ -1,60 +1,74 @@
+const buttons = document.querySelectorAll('button');
 
 let playerScore = 0;
 let computerScore = 0;
 let whoWinsRound = '';
 
-function game() {
-    let computerSelection = computerPlay();
-    let playerSelection = playerPlay();
+let computerSelection = computerChoice();
+let playerSelection = '';
 
-    function computerPlay() { //generates random computer choice
-        let randomNumber = Math.floor(Math.random() * 3)
-        switch (randomNumber) {
-          case 0:
+function computerChoice() { //generates random computer's choice
+    let randomNumber = Math.floor(Math.random() * 3)
+    switch (randomNumber) {
+        case 0:
             return 'rock'
-          case 1:
+        case 1:
             return 'paper'
-          case 2:
+        case 2:
             return 'scissors'
+    } 
+    console.log(randomNumber)
+};
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => { 
+        if (button.id == 'rockButton') {
+            playerSelection = 'rock';
+
+        } else if (button.id == 'paperButton') {
+            playerSelection = 'paper';
+
+        } else if (button.id == 'scissorsButton') {
+            playerSelection = 'scissors';
         }
+    });
+})
 
-    };
-    
-    function playerPlay() { 
-        return playerChoice = prompt('Rock, Paper or Scissors?').toLowerCase();
-    };
-    
-    function playRound(playerSelection, computerSelection) { //decides who wins the round
 
-        if ((playerSelection == 'rock') && (computerSelection == 'paper')) {
-            whoWinsRound = 'computer';
-            computerScore++;
-    
-        } else if ((playerSelection == 'paper') && (computerSelection == 'scissors')) {
-            whoWinsRound = 'computer';
-            computerScore++;
-    
-        } else if ((playerSelection == 'scissors') && (computerSelection == 'rock')) {
-            whoWinsRound = 'computer';
-            computerScore++;
-    
-        } else if ((playerSelection == 'rock') && (computerSelection == 'scissors')) {
-            whoWinsRound = 'player';
-            playerScore++;
-    
-        } else if ((playerSelection == 'paper') && (computerSelection == 'rock')) {
-            whoWinsRound = 'player';
-            playerScore++;
-    
-        } else if ((playerSelection == 'scissors') && (computerSelection == 'paper')) {
-            whoWinsRound = 'player';
-            playerScore++;
-    
-        } else {
-            whoWinsRound = 'draw';
-        }
-    };
 
+function playRound(playerSelection, computerSelection) { // simulates the round and decides who wins a single round
+
+    if ((playerSelection == 'rock') && (computerSelection == 'paper')) {
+        whoWinsRound = 'computer';
+        computerScore++;
+
+    } else if ((playerSelection == 'paper') && (computerSelection == 'scissors')) {
+        whoWinsRound = 'computer';
+        computerScore++;
+
+    } else if ((playerSelection == 'scissors') && (computerSelection == 'rock')) {
+        whoWinsRound = 'computer';
+        computerScore++;
+
+    } else if ((playerSelection == 'rock') && (computerSelection == 'scissors')) {
+        whoWinsRound = 'player';
+        playerScore++;
+
+    } else if ((playerSelection == 'paper') && (computerSelection == 'rock')) {
+        whoWinsRound = 'player';
+        playerScore++;
+
+    } else if ((playerSelection == 'scissors') && (computerSelection == 'paper')) {
+        whoWinsRound = 'player';
+        playerScore++;
+
+    } else {
+        whoWinsRound = 'draw';
+    }
+};
+
+
+/*
     function roundScore() { //shows alert window with score after every round   
         if (whoWinsRound == 'player') {
             alert(`${playerSelection} beats ${computerSelection}. You won this round. 
@@ -68,12 +82,9 @@ function game() {
             alert('It\'s a tie. Try again.');
         }
     };
+*/
 
-    playRound(playerSelection, computerSelection);
-    roundScore();
-};
-
-
+/*
 for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
     game();
 
@@ -86,6 +97,7 @@ for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
         break;
     }
 };
+*/
 
 /*
 console.log(computerSelection);
