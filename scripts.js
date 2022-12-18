@@ -17,7 +17,6 @@ function computerChoice() { //generates random computer's choice
         case 2:
             return 'scissors'
     } 
-    console.log(randomNumber)
 };
 
 buttons.forEach((button) => {
@@ -31,10 +30,10 @@ buttons.forEach((button) => {
         } else if (button.id == 'scissorsButton') {
             playerSelection = 'scissors';
         }
+        computerSelection = computerChoice(); // with every button click it triggers a function to generate new random computer's choice
+        playRound(playerSelection, computerSelection); // triggers a function to decide who wins
     });
 })
-
-
 
 function playRound(playerSelection, computerSelection) { // simulates the round and decides who wins a single round
 
@@ -65,6 +64,7 @@ function playRound(playerSelection, computerSelection) { // simulates the round 
     } else {
         whoWinsRound = 'draw';
     }
+    console.log(whoWinsRound);
 };
 
 
