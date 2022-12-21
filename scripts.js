@@ -13,24 +13,24 @@ function computerChoice() { //generates random computer's choice
     let randomNumber = Math.floor(Math.random() * 3)
     switch (randomNumber) {
         case 0:
-            return 'rock'
+            return 'Rock'
         case 1:
-            return 'paper'
+            return 'Paper'
         case 2:
-            return 'scissors'
+            return 'Scissors'
     } 
 };
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => { 
         if (button.id == 'rockButton') {
-            playerSelection = 'rock';
+            playerSelection = 'Rock';
 
         } else if (button.id == 'paperButton') {
-            playerSelection = 'paper';
+            playerSelection = 'Paper';
 
         } else if (button.id == 'scissorsButton') {
-            playerSelection = 'scissors';
+            playerSelection = 'Scissors';
         }
         computerSelection = computerChoice(); // every button click triggers a function to generate new random computer's choice
         playRound(playerSelection, computerSelection); // triggers a function to play the round
@@ -40,27 +40,27 @@ buttons.forEach((button) => {
 
 function playRound(playerSelection, computerSelection) { // "simulates" a single round, decides who wins it and gives a winner 1 point
 
-    if ((playerSelection == 'rock') && (computerSelection == 'paper')) {
+    if ((playerSelection == 'Rock') && (computerSelection == 'Paper')) {
         whoWinsRound = 'computer';
         computerScore++;
 
-    } else if ((playerSelection == 'paper') && (computerSelection == 'scissors')) {
+    } else if ((playerSelection == 'Paper') && (computerSelection == 'Scissors')) {
         whoWinsRound = 'computer';
         computerScore++;
 
-    } else if ((playerSelection == 'scissors') && (computerSelection == 'rock')) {
+    } else if ((playerSelection == 'Scissors') && (computerSelection == 'Rock')) {
         whoWinsRound = 'computer';
         computerScore++;
 
-    } else if ((playerSelection == 'rock') && (computerSelection == 'scissors')) {
+    } else if ((playerSelection == 'Rock') && (computerSelection == 'Scissors')) {
         whoWinsRound = 'player';
         playerScore++;
 
-    } else if ((playerSelection == 'paper') && (computerSelection == 'rock')) {
+    } else if ((playerSelection == 'Paper') && (computerSelection == 'Rock')) {
         whoWinsRound = 'player';
         playerScore++;
 
-    } else if ((playerSelection == 'scissors') && (computerSelection == 'paper')) {
+    } else if ((playerSelection == 'Scissors') && (computerSelection == 'Paper')) {
         whoWinsRound = 'player';
         playerScore++;
 
@@ -69,6 +69,7 @@ function playRound(playerSelection, computerSelection) { // "simulates" a single
     }
     console.log(whoWinsRound);
     updateScore();
+    roundScore();
 
 };
 
@@ -76,33 +77,28 @@ function playRound(playerSelection, computerSelection) { // "simulates" a single
 
 const yourScore = document.getElementById('yourScore');
 const oppScore = document.getElementById('opponentScore');
+const message = document.getElementById('message');
 
 function updateScore() { // updates score of each player after every round
     yourScore.textContent = `${playerScore}`;
     oppScore.textContent = `${computerScore}`;
 };
 
+function roundScore() { // displays info with round result after every round
+    if (whoWinsRound == 'player') {
+        message.textContent = `${playerSelection} beats ${computerSelection}. You won this round.`;
 
+    } else if (whoWinsRound == 'computer') {
+        message.textContent = `${playerSelection} gets beaten by ${computerSelection}. You lost this round.`;
+
+    } else {
+        message.textContent = 'It\'s a tie. Try again.';
+    }
+};
 
 
 
 /*
-    function roundScore() { //shows alert window with score after every round   
-        if (whoWinsRound == 'player') {
-            alert(`${playerSelection} beats ${computerSelection}. You won this round. 
-            Your score: ${playerScore} Computer score: ${computerScore}`);
-    
-        } else if (whoWinsRound == 'computer') {
-            alert(`${playerSelection} gets beaten by ${computerSelection}. You lost this round.
-            Your score: ${playerScore} Computer score: ${computerScore}`);
-    
-        } else {
-            alert('It\'s a tie. Try again.');
-        }
-    };
-
-
-
 for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
     game();
 
