@@ -1,3 +1,5 @@
+// GAME LOGIC
+
 const buttons = document.querySelectorAll('button');
 
 let playerScore = 0;
@@ -30,12 +32,13 @@ buttons.forEach((button) => {
         } else if (button.id == 'scissorsButton') {
             playerSelection = 'scissors';
         }
-        computerSelection = computerChoice(); // with every button click it triggers a function to generate new random computer's choice
-        playRound(playerSelection, computerSelection); // triggers a function to decide who wins
+        computerSelection = computerChoice(); // every button click triggers a function to generate new random computer's choice
+        playRound(playerSelection, computerSelection); // triggers a function to play the round
+
     });
 })
 
-function playRound(playerSelection, computerSelection) { // simulates the round and decides who wins a single round
+function playRound(playerSelection, computerSelection) { // "simulates" a single round, decides who wins it and gives a winner 1 point
 
     if ((playerSelection == 'rock') && (computerSelection == 'paper')) {
         whoWinsRound = 'computer';
@@ -65,7 +68,22 @@ function playRound(playerSelection, computerSelection) { // simulates the round 
         whoWinsRound = 'draw';
     }
     console.log(whoWinsRound);
+    updateScore();
+
 };
+
+//  GAME LOGIC ENDS HERE
+
+const yourScore = document.getElementById('yourScore');
+const oppScore = document.getElementById('opponentScore');
+
+function updateScore() { // updates score of each player after every round
+    yourScore.textContent = `${playerScore}`;
+    oppScore.textContent = `${computerScore}`;
+};
+
+
+
 
 
 /*
@@ -82,9 +100,9 @@ function playRound(playerSelection, computerSelection) { // simulates the round 
             alert('It\'s a tie. Try again.');
         }
     };
-*/
 
-/*
+
+
 for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
     game();
 
@@ -97,9 +115,9 @@ for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
         break;
     }
 };
-*/
 
-/*
+
+
 console.log(computerSelection);
 console.log(playerSelection);
 console.log(whoWinsRound);
