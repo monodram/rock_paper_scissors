@@ -70,6 +70,7 @@ function playRound(playerSelection, computerSelection) { // "simulates" a single
     console.log(whoWinsRound);
     updateScore();
     roundScore();
+    gameOver();
 
 };
 
@@ -89,32 +90,22 @@ function roundScore() { // displays info with result after every round
         message.textContent = `${playerSelection} beats ${computerSelection}. You won this round.`;
 
     } else if (whoWinsRound == 'computer') {
-        message.textContent = `${playerSelection} gets beaten by ${computerSelection}. You lost this round.`;
+        message.textContent = `${playerSelection} is beaten by ${computerSelection}. You lost this round.`;
 
     } else {
         message.textContent = 'It\'s a tie. Try again.';
     }
 };
 
+function gameOver() { // After 5 wins resets the game score and displays a message saying who won the game
+    if (playerScore == 5) { 
+        playerScore = 0;
+        computerScore = 0;
+        message.textContent = `You won the game. Congratulations!`;
 
-
-/*
-for (let i = 0; i < 15; i++) { // loops the game until someone wins 3 rounds
-    game();
-
-    if (playerScore == 3) {
-        alert('You\'ve won! Congratulations :)');
-        break;
-
-    } else if (computerScore == 3) {
-        alert('You\'ve lost :( Better luck next time.');
-        break;
-    }
+    } else if (computerScore == 5) {
+        playerScore = 0;
+        computerScore = 0;
+        message.textContent = `You lost the game. Better luck next time!`;
+    };
 };
-
-
-
-console.log(computerSelection);
-console.log(playerSelection);
-console.log(whoWinsRound);
-*/

@@ -1,29 +1,37 @@
 body {
+    font-family: 'Roboto', sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-.game {
+    background-color: #251D3A;
+    color: aliceblue;
+
 }
 
-.scoreboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.header {
+    font-size: 32px;
     justify-content: center;
-}
-
-.scoreline {
-    display: flex;
-    flex-direction: row;
-}
-
-.score {
-    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px;
 
 }
+
+.header h2 {
+    color: #ffc83d;
+    margin-bottom: 0px;
+}
+
+.header p {
+    font-size: 16px;
+}
+
+.game {
+    
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;
@@ -35,6 +43,37 @@ body {
     border: none;
     font-size: 64px;
     text-align: center;
-    width: 100%;
+    width: 150px;
+    height: 150px;
+    background-color: #251D3A;
+}
+
+.buttons button:hover {
+    font-size: 74px;
+    width: 150px;
+    height: 150px;
+    background-color: #2A2550;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#message {
+    font-size: 24px;
+}
+
+.scoreline {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.score {
+    display: flex;
+    font-size: 32px;
 
 }
