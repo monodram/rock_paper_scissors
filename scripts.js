@@ -84,7 +84,7 @@ function updateScore() { // updates score of each player after every round
     oppScore.textContent = `${computerScore}`;
 };
 
-function roundScore() { // displays info with round result after every round
+function roundScore() { // displays info with result after every round
     if (whoWinsRound == 'player') {
         message.textContent = `${playerSelection} beats ${computerSelection}. You won this round.`;
 

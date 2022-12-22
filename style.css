@@ -1,0 +1,40 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.game {
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreline {
+    display: flex;
+    flex-direction: row;
+}
+
+.score {
+    display: flex;
+
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.buttons button {
+    border: none;
+    font-size: 64px;
+    text-align: center;
+    width: 100%;
+
+}
